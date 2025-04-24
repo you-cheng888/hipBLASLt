@@ -100,6 +100,14 @@ set_target_properties( hipblaslt-bench PROPERTIES
   RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/staging"
 )
 
+set_target_properties( hipblaslt-bench PROPERTIES
+  BUILD_RPATH "${HIP_CLANG_ROOT}/lib"
+)
+
+set_target_properties( hipblaslt-bench PROPERTIES
+  INSTALL_RPATH "$ORIGIN/../llvm/lib"
+)
+
 add_dependencies( hipblaslt-bench hipblaslt-common )
 
 rocm_install(TARGETS hipblaslt-bench COMPONENT benchmarks)

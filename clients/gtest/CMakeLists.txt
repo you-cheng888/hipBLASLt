@@ -122,6 +122,14 @@ set_target_properties( hipblaslt-test PROPERTIES
   RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/staging"
 )
 
+set_target_properties( hipblaslt-test PROPERTIES
+  BUILD_RPATH "${HIP_CLANG_ROOT}/lib"
+)
+
+set_target_properties( hipblaslt-test PROPERTIES
+  INSTALL_RPATH "$ORIGIN/../llvm/lib"
+)
+
 set( HIPBLASLT_TEST_DATA "${PROJECT_BINARY_DIR}/staging/hipblaslt_gtest.data")
 add_custom_command( OUTPUT "${HIPBLASLT_TEST_DATA}"
                     COMMAND "${Python3_EXECUTABLE}" ../common/hipblaslt_gentest.py -I ../include hipblaslt_gtest.yaml -o "${HIPBLASLT_TEST_DATA}"
